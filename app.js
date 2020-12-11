@@ -145,7 +145,13 @@ const generatePage = require('./src/page-template.js');
 
 const profileDataArgs = process.argv.slice(2);
 
+console.log(profileDataArgs);
+
 const [name, github] = profileDataArgs;
+
+console.log(name, github);
+
+const pageHTML = generatePage(name, github);
 
 //generate page function was cut and moved to page-template.js//
 
