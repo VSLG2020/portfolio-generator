@@ -137,26 +137,56 @@
 
 //NEW CLEANED UP CODE FROM STUDY GUIDE//
 
-const fs = require('fs');
+// const fs = require('fs');
 
-//added statment to link pages (interlope)
-const generatePage = require('./src/page-template.js');
+// //added statment to link pages (interlope)
+// const generatePage = require('./src/page-template.js');
 
 
-const profileDataArgs = process.argv.slice(2);
+// const profileDataArgs = process.argv.slice(2);
 
-console.log(profileDataArgs);
+// console.log(profileDataArgs);
 
-const [name, github] = profileDataArgs;
+// const [name, github] = profileDataArgs;
 
-console.log(name, github);
+// console.log(name, github);
 
-const pageHTML = generatePage(name, github);
+// const pageHTML = generatePage(name, github);
 
-//generate page function was cut and moved to page-template.js//
+// //generate page function was cut and moved to page-template.js//
 
-fs.writeFile('./index.html', generatePage(name, github), err => {
-  if (err) throw new Error(err);
+// fs.writeFile('./index.html', generatePage(name, github), err => {
+//   if (err) throw new Error(err);
 
-  console.log('Portfolio complete! Check out index.html to see the output!');
-});
+//   console.log('Portfolio complete! Check out index.html to see the output!');
+// });
+
+
+// USING INQUIRER IN PLACE OF PROCESS.ARGV//
+
+
+//ADD THE INQUIRER 
+const inquirer = require('inquirer');
+
+// const fs = require('fs');
+// const generatePage = require('./src/page-template');
+
+// const pageHTML = generatePage(name, github);
+
+// fs.writeFile('./index.html', pageHTML, err => {
+//   if (err) throw err;
+
+//   console.log('Portfolio complete! Check out index.html to see the output!');
+// });
+
+//console.log(inquirer)
+
+inquirer
+  .prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is your name?'
+    }
+  ])
+  .then(answers => console.log(answers));
